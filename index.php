@@ -29,7 +29,7 @@ $serveraddr = $_SERVER['SERVER_ADDR'];
     <header>
       <div class="container">
 
-<?php echo "<a><h1>XIOS-MONITOR@" . $serveraddr ."</h1></a>"?>
+<?php echo "<h1><a>XIOS-MONITOR@" . $serveraddr ."</a> $uptime</h1>"?>
 <?php echo "<h2>Monitoring " . $xios_count . " nodes :</h2>"?>
 
 <!------------- Menu --------------------!>
