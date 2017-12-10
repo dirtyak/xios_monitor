@@ -23,16 +23,13 @@ $uptime = shell_exec('uptime -p'); # system uptime
 $getreportedblock = shell_exec('curl http://163.172.143.200:3001/api/getblockcount'); # asking block height to explorer
 $lastblocks = shell_exec("tail -n 2 history.html | sed s/,//g | awk -F ',' '{print $1}' | tr '\n' ' ' | awk '{print $2 - $1}'");
 $serveraddr = $_SERVER['SERVER_ADDR'];
-$getconnectioncount = "NO";
-$getblockcount = "offline";
-$balance = "offline";
 ?>
 
   <body>
     <header>
       <div class="container">
 
-<h1>Multi Monitor (beta) CPU load : <?php echo $load?></h1>
+<?php echo "<a><h1>XIOS-MONITOR@" . $serveraddr ."</h1></a>"?>
 
 <!------------- Menu --------------------!>
 <?php include "/var/www/html/navbar.php";?>
@@ -50,12 +47,11 @@ while ($howmany <= 3)
 
 $waitTimeoutInSeconds = 1; 
 if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds)){   
-	    echo '<p> <font color=greenyellow>XIOS_' . $howmmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE</font></b><br />';
+	    echo '<p> <font color=greenyellow>XIOS' . $howmmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE</font></b><br />';
 } else {
 	    echo '<p> <font color=red>XIOS_' . $howmmany . '@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></b><br />';
 } 
 fclose($fp);
-
 
     $getblockcount = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getblockcount');
     $getconnectioncount = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getconnectioncount');
