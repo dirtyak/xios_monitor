@@ -28,7 +28,6 @@ $getblockcount = "offline";
 $balance = "offline";
 ?>
 
-
   <body>
     <header>
       <div class="container">
