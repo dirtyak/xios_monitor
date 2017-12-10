@@ -43,20 +43,21 @@ $waitTimeoutInSeconds = 1;
 if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds)){
 
     $getblockcount = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getblockcount');
-    $getconnectioncount = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getconnectioncount');
 
 	switch (true) {
-	  case ($getblockcount=$getreportedblock):
-	   echo '<p> <font color=greenyellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE [SYNCED]</font></b><br />';
+	  case ($getblockcount>=$getreportedblock):
+	   echo '<p> <font color=greenyellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE [SYNCED]</font><br />';
 	  break;
-	  case ($getblockcount<$getreportedblock):
-	    echo '<p> <font color=yellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE [SYNCING]</font></b><br />';
+	  case ($getblockcount < $getreportedblock):
+	    echo '<p> <font color=yellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE [SYNCING]</font><br />';
 	  break;
 	  default:
-	    echo '<p> <font color=red>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >>ONLINE [ERROR]</font></b><br />';
+	    echo '<p> <font color=red>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >>ONLINE [ERROR]</font><br />';
+	  break;
 	}
 
     $getblockcount = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getblockcount');
+    $getconnectioncount = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getconnectioncount');
     $staking = shell_exec("sudo /root/xios/src/XIOSd -datadir=/root/.XIOS" . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf getstakinginfo | grep staking | awk '{print $3}' | sed s/,//g");
     $balance = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getbalance');
     $getwork = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getwork');
@@ -64,6 +65,7 @@ if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds
     echo 'Block height (node/explorer) : ' . $getblockcount . '/ ' . $getreportedblock . '</br>';
     echo 'Staking : ' . $staking . '</br>'; 
     echo 'Balance : ' . $balance .'</br>';
+    echo 'GetWork : ' . $getwork .'</br>';
 } else {
 	    echo '<p> <font color=red>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></b><br />';
 } 
