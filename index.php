@@ -30,6 +30,7 @@ $serveraddr = $_SERVER['SERVER_ADDR'];
       <div class="container">
 
 <?php echo "<a><h1>XIOS-MONITOR@" . $serveraddr ."</h1></a>"?>
+<?php echo "<h2>Monitoring " . $xios_count . " nodes :</h2>"?>
 
 <!------------- Menu --------------------!>
 <?php include "/var/www/html/navbar.php";?>
@@ -42,14 +43,14 @@ $serveraddr = $_SERVER['SERVER_ADDR'];
 <!--- Lets make a big loop for all those nodes ----->
 <?php
 $howmany = 1;
-while ($howmany <= 3)
+while ($howmany <= $xios_count)
 {
 
 $waitTimeoutInSeconds = 1; 
 if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds)){   
-	    echo '<p> <font color=greenyellow>XIOS' . $howmmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE</font></b><br />';
+	    echo '<p> <font color=greenyellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE</font></b><br />';
 } else {
-	    echo '<p> <font color=red>XIOS_' . $howmmany . '@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></b><br />';
+	    echo '<p> <font color=red>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></b><br />';
 } 
 fclose($fp);
 
