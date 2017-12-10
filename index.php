@@ -41,13 +41,25 @@ while ($howmany <= $xios_count)
 
 $waitTimeoutInSeconds = 1;
 if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds)){
-    echo '<p> <font color=greenyellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE</font></b><br />';
+
+	switch ($getblockcount) {
+	  case ($getreportedblock):
+	   echo '<p> <font color=greenyellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE</font></b><br />';
+	  break;
+	  case (0): ;
+	    echo '<p> <font color=yellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> SYNCING</font></b><br />';
+	  break;
+	}
+
     $getblockcount = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getblockcount');
     $getconnectioncount = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getconnectioncount');
     $staking = shell_exec("sudo /root/xios/src/XIOSd -datadir=/root/.XIOS" . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf getstakinginfo | grep staking | awk '{print $3}' | sed s/,//g");
     $balance = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getbalance');
     $getwork = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getwork');
-    echo 'Connections : ' . $getconnectioncount . ' | Block height (node/explorer) : ' . $getblockcount .' / ' . $getreportedblock . ' | Staking : ' . $staking . ' | Balance : ' . $balance .'';
+    echo 'Connections : ' . $getconnectioncount . '</br>';
+    echo 'Block height (node/explorer) : ' . $getblockcount . '/ ' . $getreportedblock . '</br>';
+    echo 'Staking : ' . $staking . '</br>'; 
+    echo 'Balance : ' . $balance .'</br>';
 } else {
 	    echo '<p> <font color=red>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></b><br />';
 } 
@@ -55,7 +67,6 @@ fclose($fp);
     echo '</p>';
     $howmany++;
     $xios_port++;
-
 }
 ?>
 
