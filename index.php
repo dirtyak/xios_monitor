@@ -32,33 +32,33 @@ $serveraddr = $_SERVER['SERVER_ADDR'];
 <div class="container">
 <section id="main_content">
 
-<!--- Define sudo root XIOSd outputs ------------------------------------------------------------------------------------>	
+<!--- Define sudo root XIOSd outputs ------------------------------------------------------------------------------------>
 <!--- Lets make a big loop for all those nodes ----->
 <?php
 $howmany = 1;
 while ($howmany <= $xios_count)
 {
 
-$waitTimeoutInSeconds = 1; 
-if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds)){   
-	    echo '<p> <font color=greenyellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE</font></b><br />';
-} else {
-	    echo '<p> <font color=red>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></b><br />';
-} 
-fclose($fp);
-
+$waitTimeoutInSeconds = 1;
+if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds)){
+    echo '<p> <font color=greenyellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE</font></b><br />';
     $getblockcount = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getblockcount');
     $getconnectioncount = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getconnectioncount');
     $staking = shell_exec("sudo /root/xios/src/XIOSd -datadir=/root/.XIOS" . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf getstakinginfo | grep staking | awk '{print $3}' | sed s/,//g");
     $balance = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getbalance');
     $getwork = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getwork');
     echo 'Connections : ' . $getconnectioncount . ' | Block height (node/explorer) : ' . $getblockcount .' / ' . $getreportedblock . ' | Staking : ' . $staking . ' | Balance : ' . $balance .'';
+} else {
+	    echo '<p> <font color=red>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></b><br />';
+} 
+fclose($fp);
     echo '</p>';
     $howmany++;
     $xios_port++;
+
 }
 ?>
 
 
 
-<?php include "/var/www/html/footer.php";?>
+<?php include "/var/www/html/footer.html";?>
