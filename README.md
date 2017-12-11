@@ -27,8 +27,10 @@ rm -r xios-monitor
 rm -r /var/www/html/index.html</pre>
 
 Add www-data to sudoers file for shell_exec function.
-
+<pre>nano /etc/sudoers</pre>
+Add this line :
 <pre>www-data ALL=(ALL) NOPASSWD:ALL</pre>
+Save it
 
 # Config
 
