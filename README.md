@@ -51,7 +51,7 @@ Hosted by Vultr : https://www.vultr.com/?ref=7280492
 
 If you already setup your wallet with config files in .XIOS copy it to .XIOS1.
 
-</pre>cp $home/.XIOS $home/.XIOS1
+<pre>cp $home/.XIOS $home/.XIOS1
 $home/src/xios/XIOSd stop</pre>
 
 After this use this script to get your node online
