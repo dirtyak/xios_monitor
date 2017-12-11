@@ -51,9 +51,12 @@ Hosted by Vultr : https://www.vultr.com/?ref=7280492
 
 If you already setup your wallet with config files in .XIOS copy it to .XIOS1.
 
-<pre>cp $home/.XIOS $home/.XIOS1 #copy your wallet config from .XIOS to .XIOS1 for compatibility reasons
-$home/src/xios/XIOSd stop # Stop your wallet because it's using .XIOS config files</pre>
+<pre>cp $home/.XIOS $home/.XIOS1
+$home/src/xios/XIOSd stop</pre>
 
-After this you might now use this script to get your node online (every time) :
+Now use this script to get your node(s) online (every time) :
 
-<pre>/root/xios/src/XIOSd -datadir=/root/.XIOS1 -config=/root/.XIOS1/XIOS.conf -daemon # Now run the proper .XIOS1 wallet</pre>
+<pre>/root/xios/src/XIOSd -datadir=/root/.XIOS1 -config=/root/.XIOS1/XIOS.conf -daemon
+#/root/xios/src/XIOSd -datadir=/root/.XIOS2 -config=/root/.XIOS2/XIOS.conf -daemon
+#/root/xios/src/XIOSd -datadir=/root/.XIOS3 -config=/root/.XIOS3/XIOS.conf -daemon
+</pre>
