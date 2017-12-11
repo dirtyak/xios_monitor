@@ -39,3 +39,9 @@ $xios_port = 9000;         # port used by first XIOSd
 $xios_count = 3;           # How many XIOSd to monitor ?</pre>
 
 In this default config XIOSd ports must be 9000, 9001, 9002 for XIOS1, XIOS2, XIOS3 to work
+
+# Example 
+
+You can try it at : http://45.77.53.110/
+
+Hosted by Vultr : https://www.vultr.com/?ref=7280492
