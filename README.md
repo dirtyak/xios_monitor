@@ -46,3 +46,14 @@ In this default config XIOSd ports must be 9000, 9001, 9002 for XIOS1, XIOS2, XI
 You can try it at : http://45.77.53.110/
 
 Hosted by Vultr : https://www.vultr.com/?ref=7280492
+
+# Fix 
+
+If you already setup your wallet with config files in .XIOS copy it to .XIOS1.
+
+</pre>cp $home/.XIOS $home/.XIOS1
+$home/src/xios/XIOSd stop</pre>
+
+After this use this script to get your node online
+
+<pre>/root/xios/src/XIOSd -datadir=/root/.XIOS1 -config=/root/.XIOS1/XIOS.conf -daemon</pre>
