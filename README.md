@@ -20,7 +20,8 @@ Apache2 and php running :
 
 As root :
 
-<pre>git clone https://github.com/dirtyak/xios-monitor
+<pre>cd
+git clone https://github.com/dirtyak/xios-monitor
 cp -r ismynodeok/* /var/www/html/.
 rm -r ismynodeok
 rm -r /var/www/html/index.html</pre>
