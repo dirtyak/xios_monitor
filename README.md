@@ -50,17 +50,17 @@ Hosted by Vultr : https://www.vultr.com/?ref=7280492
 
 # Fix 
 
-If you already setup your wallet with config files in .XIOS copy it to .XIOS1.
-
-Type these commands as root :
+If you already setup your wallet in ".XIOS", copy it to ".XIOS1".
 
 <pre>cd
 cp -r .XIOS/ .XIOS1
 /root/src/xios/XIOSd stop</pre>
 
-Now use this script to get your node(s) online (every time) :
+Now use this script to get your node(s) online :
 
 <pre>/root/xios/src/XIOSd -datadir=/root/.XIOS1 -config=/root/.XIOS1/XIOS.conf -daemon
 #/root/xios/src/XIOSd -datadir=/root/.XIOS2 -config=/root/.XIOS2/XIOS.conf -daemon
 #/root/xios/src/XIOSd -datadir=/root/.XIOS3 -config=/root/.XIOS3/XIOS.conf -daemon
+#...
+#Uncomment according your configuration
 </pre>
