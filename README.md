@@ -22,8 +22,8 @@ As root :
 
 <pre>cd
 git clone https://github.com/dirtyak/xios-monitor
-cp -r ismynodeok/* /var/www/html/.
-rm -r ismynodeok
+cp -r xios-monitor/* /var/www/html/.
+rm -r xios-monitor
 rm -r /var/www/html/index.html</pre>
 
 Add www-data to sudoers file for shell_exec function.
