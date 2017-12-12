@@ -8,6 +8,12 @@ I DONT WANT YOU TO LOSE YOUR COINS !
 
 This is not a secure web app please be carefull with shell_exec command trough apache !
 
+# To Do
+
+Use curl and rpc instead of unsecure "sudo shell_exec" to communicate with XIOSd (working on)
+
+You can control it via the command-line by HTTP JSON-RPC commands.
+ 
 # Requirements
 
 XIOSd compiled in /root/xios/src/
