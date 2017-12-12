@@ -68,8 +68,7 @@ if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds
     echo 'Staking : ' . $staking . '</br>'; 
     echo 'Balance : ' . $balance . '</br>';
     echo 'GetWork : ' . $getwork . '</br>';
-    echo 'Address : ' . $xiosaddress . '</br>';
-    echo '(New Address Generated on Receive)</br>';
+    echo 'Address : ' . $xiosaddress . '(New Address Generated on Receive)</br>';
 } else {
 	    echo '<p> <font color=red>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></b><br />';
 } 
