@@ -14,7 +14,6 @@
 $load = shell_exec("uptime | awk '{print $12}' | sed s/,//g");
 $uptime = shell_exec('uptime -p'); # system uptime
 $getreportedblock = shell_exec('curl http://163.172.143.200:3001/api/getblockcount'); # asking block height to explorer
-$lastblocks = shell_exec("tail -n 2 history.html | sed s/,//g | awk -F ',' '{print $1}' | tr '\n' ' ' | awk '{print $2 - $1}'");
 $serveraddr = $_SERVER['SERVER_ADDR'];
 ?>
 
