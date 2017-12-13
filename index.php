@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/style/style.css">
   </head>
 
+
 <!--- Import config.php ------------------->
 <?php require '/var/www/html/config.php'; ?>
 
@@ -19,10 +20,9 @@ $serveraddr = $_SERVER['SERVER_ADDR'];
 
   <body>
     <header>
-      <div class="container">
 
-<?php echo "<h1><a>XIOS-MONITOR@" . $serveraddr ."</a> $uptime</h1>"?>
-<?php echo "<h2>CPU load : " . $load . "| Monitoring " . $xios_count . " nodes :</h2>"?>
+<?php echo "<a href=http://$serveraddr><b>XIOS-MONITOR</b>@" . $serveraddr ."</a></br>$uptime"?>
+<?php echo "</br>CPU load : " . $load . "</br>Monitoring " . $xios_count . " nodes :"?>
 
 <!------------- Menu --------------------!>
 <?php include "/var/www/html/navbar.php";?>
@@ -46,13 +46,13 @@ if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds
 
 	switch (true) {
 	  case ($getblockcount>=$getreportedblock):
-	   echo '<pre><font color=greenyellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE [SYNCED]</font><br />';
+	   echo '<pre><b><font color=greenyellow>' . $xios_name . '' . $howmany . '</b>@' . $serveraddr . ':' . $xios_port . ' >> ONLINE [SYNCED]</font>';
 	  break;
 	  case ($getblockcount<$getreportedblock):
-	    echo '<pre><font color=yellow>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> ONLINE [SYNCING]</font><br />';
+	    echo '<pre><b><font color=yellow>' . $xios_name . '' . $howmany . '</b>@' . $serveraddr . ':' . $xios_port . ' >> ONLINE [SYNCING]</font>';
 	  break;
 	  default:
-	    echo '<pre><font color=red>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >>ONLINE [ERROR]</font><br />';
+	    echo '<pre><b><font color=red>' . $xios_name . '' . $howmany . '</b>@' . $serveraddr . ':' . $xios_port . ' >>ONLINE [ERROR]</font>';
 	  break;
 	}
 
@@ -62,8 +62,8 @@ if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds
     $balance = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getbalance');
     $getwork = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf getwork | grep midstate | awk '{print $3}'");
     $xiosaddress = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf getaccountaddress 0");
-    $listtx = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf listtransactions | egrep 'address|amount|txid'");
-    echo 'Connections : ' . $getconnectioncount . '</br>';
+    $listtx = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf listtransactions | egrep 'address|amount|txid|blockindex'");
+    echo '</br>Connections : ' . $getconnectioncount . '</br>';
     echo 'Block : ' . $getblockcount . '/ ' . $getreportedblock . ' (node / explorer)</br>';
     echo 'Staking : ' . $staking; 
     echo 'Balance : ' . $balance;
@@ -71,7 +71,7 @@ if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds
     echo 'Address : ' . $xiosaddress;
     echo 'TX List :</br>' . $listtx . '</pre>';
 } else {
-	    echo '<pre><font color=red>' . $xios_name . '' . $howmany . '@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></pre>';
+	    echo '<pre><b><font color=red>' . $xios_name . '' . $howmany . '</b>@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></pre>';
 } 
 fclose($fp);
     echo '</p>';

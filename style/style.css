@@ -23,11 +23,14 @@
       margin: 0
   }
   pre {
-      padding: 2rem;
-      margin: 1.75rem 0;
+      padding: 5px 5px 5px 15px;
+      margin: 5px 5px 0px 0px;
       background-color: #000;
       border: 1px solid #ccc;
       overflow: auto
+  }
+  pre:hover {
+      background-color: #312;
   }
   code,
   pre,

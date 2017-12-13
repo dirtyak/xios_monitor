@@ -58,9 +58,11 @@ Hosted by Vultr : https://www.vultr.com/?ref=7280492
 
 If you already setup your wallet in ".XIOS", copy it to ".XIOS1".
 
-<pre>cd
-cp -r .XIOS/ .XIOS1
-/root/src/xios/XIOSd stop</pre>
+<b>As root</b> :
+
+<pre>/root/src/xios/XIOSd stop
+cd
+cp -r $HOME/.XIOS/ $HOME/.XIOS1</pre>
 
 Now use this script to get your node(s) online :
 
