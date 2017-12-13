@@ -5,9 +5,6 @@
     <link rel="stylesheet" href="/style/style.css">
   </head>
 
-<!-- Snow effect -->
-<script src="snowstorm.js"></script>
-
 <!--- Import config.php ------------------->
 <?php require '/var/www/html/config.php'; ?>
 
