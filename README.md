@@ -10,9 +10,13 @@ This is not a secure web app please be carefull with shell_exec command trough a
 
 # To Do
 
-Use curl and rpc instead of unsecure "sudo shell_exec" to communicate with XIOSd (working on)
+- Use lighttpd instead of apache2 
 
-You can control it via the command-line by HTTP JSON-RPC commands.
+- Add basic digest authentification
+
+- Show more info : pubkey, privkey ? (secured by basic auth)
+
+- Use bash scripts to get XIOSd outputs instead of directly manipulating XIOSd through shell_exec
  
 # Requirements
 
