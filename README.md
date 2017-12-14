@@ -14,10 +14,6 @@ This is not a secure web app please be carefull with shell_exec command trough a
 
 - Add basic digest authentification
 
-- Show more info : pubkey, privkey ? (secured by basic auth)
-
-- Use bash scripts to get XIOSd outputs instead of directly manipulating XIOSd through shell_exec
- 
 # Requirements
 
 XIOSd compiled in /root/xios/src/
