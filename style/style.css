@@ -3,10 +3,9 @@
   }
   body {
       font-size: 1rem;
-      line-height: 1.5rem;
       font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
       word-wrap: break-word;
-      background-color: #151515;
+      background-color: #201;
       color: white
   }
   h1,
@@ -23,6 +22,7 @@
       margin: 0
   }
   pre {
+      width: 650px;
       padding: 5px 5px 5px 15px;
       margin: 5px 5px 0px 0px;
       background-color: #000;
@@ -30,14 +30,13 @@
       overflow: auto
   }
   pre:hover {
-      background-color: #312;
+      background-color: #201;
   }
   code,
   pre,
   pre code {
       font-weight: 100;
       text-shadow: none;
-      margin: 1.75rem 0
   }
   a {
       cursor: pointer;
@@ -46,7 +45,11 @@
       border-bottom: 1px solid #ff2e88
   }
   a:hover {
-      background-color: #ff2e88;
+      background-color: #201;
       color: #fff
   }
-
+  .ascii-art {
+      font-family: monospace;
+      white-space: pre;
+  }
+  

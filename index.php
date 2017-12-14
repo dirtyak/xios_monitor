@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/style/style.css">
   </head>
 
-<!--- Import config.php ------------------->
+<!--- Import config.php -------------------> 
 <?php require '/var/www/html/config.php'; ?>
 
 <!--- Gona ask block height from http://163.172.143.200:3001 --->
@@ -17,16 +17,16 @@ $getreportedblock = shell_exec('curl http://163.172.143.200:3001/api/getblockcou
 $serveraddr = $_SERVER['SERVER_ADDR'];
 ?>
 
-  <body>
+
     <header>
 
-<?php echo "<a href=http://$serveraddr><b>XIOS-MONITOR</b>@" . $serveraddr ."</a></br>$uptime"?>
-<?php echo "</br>CPU load : " . $load . "</br>Monitoring " . $xios_count . " nodes :"?>
+<!--- Show the Banner -------------------> 
+<?php include '/var/www/html/banner.php'; ?>
 
-<!------------- Menu --------------------!>
-<?php include "/var/www/html/navbar.php";?>
+    </header>
+  
+<body>
 
-</div></header>
 <div class="container">
 <section id="main_content">
 
@@ -65,6 +65,7 @@ if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds
     echo '</br>Connections : ' . $getconnectioncount . '</br>';
     echo 'Block : ' . $getblockcount . '/ ' . $getreportedblock . ' (node / explorer)</br>';
     echo 'Staking : ' . $staking; 
+    echo 'Masternode : ' . $masternode . '</br>';
     echo 'Balance : ' . $balance;
     echo 'GetWork : ' . $getwork;
     echo 'Address : ' . $xiosaddress;
@@ -78,6 +79,5 @@ fclose($fp);
     $xios_port++;
 }
 ?>
-
 
 <?php include "/var/www/html/footer.html";?>
