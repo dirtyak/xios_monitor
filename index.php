@@ -40,7 +40,7 @@ while ($howmany <= $xios_count)
 $waitTimeoutInSeconds = 1;
 if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds)){
 
-    $getreportedblock = shell_exec('curl http://163.172.143.200:3001/api/getblockcount'); # asking block height to explorer
+    $getreportedblock = shell_exec('curl http://xios.donkeypool.com/api/getblockcount'); # asking block height to explorer
     $getblockcount = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . '/XIOS.conf getblockcount');
 
 	switch (true) {
@@ -64,7 +64,7 @@ if($fp = fsockopen('localhost',$xios_port,$errCode,$errStr,$waitTimeoutInSeconds
     $listtx = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf listtransactions | egrep 'address|amount|txid|blockindex'");
     echo '</br>Connections : ' . $getconnectioncount . '</br>';
     echo 'Block : ' . $getblockcount . '/ ' . $getreportedblock . ' (node / explorer)</br>';
-    echo 'Staking : ' . $staking; 
+    echo 'Staking : ' . $staking;
     echo 'Masternode : ' . $masternode . '</br>';
     echo 'Balance : ' . $balance;
     echo 'GetWork : ' . $getwork;
