@@ -59,14 +59,14 @@ echo '<div class="floating-box">';
 
     $getblockcount = shell_exec("sudo /root/xios/src/XIOSd -datadir=/root/.XIOS" . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf getblockcount | tr '\n' ' '");
     //$getconnectioncount = shell_exec("sudo /root/xios/src/XIOSd -datadir=/root/.XIOS" . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf getconnectioncount | tr '\n' ' '");
-    $xiosaddress = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf getaccountaddress 0");
+    $xiosaddress = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf listtransactions 0 1000| grep -B5 generated | grep address | tail -n 1|awk '{print $3}'");
     $getinfo = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf getinfo | grep -E '\"balance|blocks|connection'");
     $mngetinfo = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf masternode status| grep status");
     $stakinginfo = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf getstakinginfo|grep -E staking\|enabled");
     $received = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf listtransactions 0 10000|grep generate| wc -l");
     $txid = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . ' -config=/root/.XIOS' . $howmany . "/XIOS.conf listtransactions 0 1000| grep -A7 1000 | grep txid| awk '{print $3}'");
     //$listtx = shell_exec('sudo /root/xios/src/XIOSd -datadir=/root/.XIOS' . $howmany . " -config=/root/.XIOS" . $howmany . "/XIOS.conf listtransactions | grep -E 'generated'");
-    echo '</br>Address(0) : ' . $xiosaddress . '';
+    echo '</br>ADDR : ' . $xiosaddress . '';
     echo '</br>TXID : </br><font size="1">' . $txid . '</font>';
     echo '</br>GETINFO : </br>' . $getinfo . '';
     echo '</br>MASTERNODE STATUS : </br>' . $mngetinfo . '';
