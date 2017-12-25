@@ -20,10 +20,34 @@
       width: 380px;
       padding: 5px;
       margin: 1px;
-      background-color: #000;
       border: 1px solid #ccc;
       overflow: auto
   }
+  pre.online {
+      width: 380px;
+      padding: 5px;
+      margin: 1px;
+      background-color: #020;
+      border: 1px solid #ccc;
+      overflow: auto
+  }
+  pre.syncing {
+      width: 380px;
+      padding: 5px;
+      margin: 1px;
+      background-color: #220;
+      border: 1px solid #ccc;
+      overflow: auto
+  }
+  pre.offline {
+      width: 380px;
+      padding: 5px;
+      margin: 1px;
+      background-color: #300;
+      border: 1px solid #ccc;
+      overflow: auto
+  }
+
 .floating-box {
     float: left;
     width: 400px;
@@ -34,7 +58,6 @@
     clear: left;
 }
   pre:hover {
-      background-color: #201;
       color: #fff
   }
 

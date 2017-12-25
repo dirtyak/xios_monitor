@@ -1,6 +1,5 @@
 <?php
-echo '<center>';
-echo '<div class="ascii-art">';
+echo '<center><div class="ascii-art">';
 echo "<a href=http://$serveraddr></br>";
 echo "<b><font color=#8A084B>__________________________________</b></font></br>";
 echo "<b><font color=#8A084B>|   #   #   #    ####     #####   </b>|</font></br>";

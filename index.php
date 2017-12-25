@@ -47,13 +47,13 @@ echo '<div class="floating-box">';
 
 	switch (true) {
 	  case ($getblockcount>=$getreportedblock):
-	    echo '<pre background-color=red><b><font color=greenyellow>' . $xios_name . '' . $howmany . '</b>@' . $serveraddr . ':' . $xios_port . ' >> ONLINE [SYNCED]</font>';
+	    echo '<pre class="online"><b><font color=greenyellow>' . $xios_name . '' . $howmany . '</b>@' . $serveraddr . ':' . $xios_port . ' >> ONLINE [SYNCED]</font>';
 	  break;
 	  case ($getblockcount<$getreportedblock):
 	    echo '<pre><b><font color=yellow>' . $xios_name . '' . $howmany . '</b>@' . $serveraddr . ':' . $xios_port . ' >> ONLINE [SYNCING]</font>';
 	  break;
 	  default:
-	    echo '<pre><b><font color=red>' . $xios_name . '' . $howmany . '</b>@' . $serveraddr . ':' . $xios_port . ' >>ONLINE [ERROR]</font>';
+	    echo '<pre class="offline"><b><font color=red>' . $xios_name . '' . $howmany . '</b>@' . $serveraddr . ':' . $xios_port . ' >>ONLINE [ERROR]</font>';
 	  break;
 	}
 
@@ -76,7 +76,7 @@ echo '<div class="floating-box">';
     echo '</br>RECEIVED : ' . $received . '</pre>';
 } else {
     echo '<div class="floating-box">';
-    echo '<pre><b><font color=red>' . $xios_name . '' . $howmany . '</b>@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></pre>';
+    echo '<pre class="offline"><b><font color=red>' . $xios_name . '' . $howmany . '</b>@' . $serveraddr . ':' . $xios_port . ' >> OFFLINE</font></pre>';
 }
 fclose($fp);
     echo '</div>';
