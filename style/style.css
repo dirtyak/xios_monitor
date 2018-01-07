@@ -19,8 +19,8 @@
   pre {
       width: 380px;
       padding: 5px;
+      border: 1px solid #603;
       margin: 1px;
-      border: 1px solid #ccc;
       overflow: auto
   }
   pre.online {
@@ -28,15 +28,13 @@
       padding: 5px;
       margin: 1px;
       background-color: #020;
-      border: 1px solid #ccc;
       overflow: auto
   }
   pre.syncing {
       width: 380px;
       padding: 5px;
       margin: 1px;
-      background-color: #220;
-      border: 1px solid #ccc;
+      background-color: #321;
       overflow: auto
   }
   pre.offline {
@@ -44,7 +42,6 @@
       padding: 5px;
       margin: 1px;
       background-color: #300;
-      border: 1px solid #ccc;
       overflow: auto
   }
 
@@ -75,6 +72,14 @@
   a:hover {
       background-color: #201;
       color: #fff
+  }
+  hr {
+      display: block;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #603;
+      margin: 1em 0;
+      padding: 0; 
   }
   .ascii-art {
       font-family: monospace;
